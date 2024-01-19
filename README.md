@@ -1,3 +1,3 @@
 # MicrofrontEnd with React
 
-POC
+Micro Products
