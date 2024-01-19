@@ -1,10 +1,13 @@
-import faker from 'faker'
+import { faker } from '@faker-js/faker'
 
 let products = ''
+const randomName = faker.person.fullName() // Rowan Nikolaus
 
-for (let i = 0; i > 3; i++) {
+for (let i = 0; i < 5; i++) {
 	const name = faker.commerce.productName()
-	products += `<div>${name}</div>`
+	const price = faker.commerce.price()
+	products += `<div>${name} | ${price}</div>`
 }
 
-console.log(products)
+console.log(products, randomName)
+document.querySelector('#dev-products').innerHTML = products
