@@ -11,3 +11,6 @@ for (let i = 0; i < 5; i++) {
 }
 
 document.querySelector('#dev-products').innerHTML = products
+
+document.querySelector('#dev-products').classList.add('bg-red-200', 'p-3')
+document.querySelector('#content-products').classList.add('flex', 'items-center', 'justify-center', 'h-screen')

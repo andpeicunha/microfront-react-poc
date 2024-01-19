@@ -3,11 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 	cache: false,
-	mode: 'production',
+	mode: 'development',
 	entry: './src/index.js',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
+		clean: true,
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -22,9 +23,9 @@ module.exports = {
 				include: path.resolve(__dirname, 'src'),
 				use: {
 					loader: 'babel-loader',
-					options: {
-						presets: ['@babel/preset-env'],
-					},
+					// options: {
+					// 	presets: ['@babel/preset-env'],
+					// },
 				},
 			},
 			{
