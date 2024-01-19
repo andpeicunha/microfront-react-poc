@@ -2,13 +2,12 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-	mode: 'development',
-	entry: {
-		index: './src/index.js',
-	},
-	devtool: 'inline-source-map',
-	devServer: {
-		static: './dist',
+	cache: false,
+	mode: 'production',
+	entry: './src/index.js',
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'bundle.js',
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -16,4 +15,26 @@ module.exports = {
 			template: './public/index.html',
 		}),
 	],
+	module: {
+		rules: [
+			{
+				test: /\.js$/i,
+				include: path.resolve(__dirname, 'src'),
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env'],
+					},
+				},
+			},
+			{
+				test: /\.css$/i,
+				include: path.resolve(__dirname, 'src'),
+				use: ['style-loader', 'css-loader', 'postcss-loader'],
+			},
+		],
+	},
+	devServer: {
+		static: 'dist',
+	},
 }
